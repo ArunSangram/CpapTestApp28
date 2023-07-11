@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_startTherapy"
+        android:icon="@drawable/baseline_not_started_24"
+        android:title="Start Therapy" />
+
+    <item
+        android:id="@+id/menu_reports"
+        android:icon="@drawable/baseline_history_24"
+        android:title="History" />
+</menu>

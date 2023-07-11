@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".device.fragAddDevice.ScanDevice">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include
+            android:id="@+id/scanFrag_toolbar"
+            layout="@layout/toolbar" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/scanFrag_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.2"
+            app:layout_constraintStart_toStartOf="parent" />
+        <!--    SCANNING LAYOUT -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scanFrag_scanningLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/scanFrag_guide"
+            app:layout_constraintTop_toBottomOf="@id/scanFrag_toolbar">
+
+            <ProgressBar
+                android:id="@+id/fragScan_progressBar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fragScan_scanningText"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragScan_scanningText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Looking for device , Please Wait..."
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/fragScan_progressBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/fragScan_progressBar"
+                app:layout_constraintTop_toTopOf="@id/fragScan_progressBar" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--   START SCAN LAYOUT     -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scanFrag_startScanLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/scanFrag_guide"
+            app:layout_constraintTop_toBottomOf="@id/scanFrag_toolbar">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/scanFrag_buttonScan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/ui_blue"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="Refresh Scan"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                app:elevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--    RECYCLER VIEW    -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scanFrag_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scanFrag_guide" />
+
+        <!--    BLUETOOTH DISABLED    -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scanFrag_bluetoothLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/scanFrag_guide"
+            app:layout_constraintHeight_percent="0.1">
+
+            <TextView
+                android:id="@+id/scanFrag_bluetoothDisabledTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Bluetooth Disabled"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/scanFrag_buttonEnableBluetooth"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/scanFrag_buttonEnableBluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/ui_blue"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="Enable Bluetooth"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                app:elevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/scanFrag_bluetoothDisabledTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--    LOCATION DISABLED    -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scanFrag_locationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintTop_toBottomOf="@id/scanFrag_guide">
+
+            <TextView
+                android:id="@+id/scanFrag_locationDisabledTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Location Disabled"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/scanFrag_buttonEnableLocation"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/scanFrag_buttonEnableLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/ui_blue"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="Enable Location"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                app:elevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/scanFrag_locationDisabledTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

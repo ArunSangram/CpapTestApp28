@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".device.DeviceDetails">
+
+    <include
+        android:id="@+id/dDetails_toolbar"
+        layout="@layout/toolbar" />
+
+    <!--     NO DEVICE PRESENT LAYOUT       -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dDetails_noDeviceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/rounded_white_stroke_grey"
+        android:paddingVertical="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/dDetails_toolbar"
+        tools:layout_editor_absoluteX="20dp">
+
+        <TextView
+            android:id="@+id/dDetails_noDevice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="No Device Available.."
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/dDetails_noDevice_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dDetails_noDevice_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="15dp"
+            android:text="Add Device"
+            android:textColor="@color/ui_blue"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dDetails_noDevice_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  DEVICE PRESENT LAYOUT  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dDetails_devicePresentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dDetails_toolbar">
+
+        <!--  DEVICE IMAGE  -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dDetails_deviceImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="3dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_foreground" />
+        </com.google.android.material.card.MaterialCardView>
+        <!--    BODY BLOCK  -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dDetails_bodyBlock"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dDetails_deviceImage">
+            <!--    GUIDELINE   -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/dDetails_guide1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent" />
+            <!-- DEVICE NAME TITLE -->
+            <TextView
+                android:id="@+id/dDetails_nameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Device Name"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/dDetails_guide1"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--    DEVICE NAME     -->
+            <TextView
+                android:id="@+id/dDetails_nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Name"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/dDetails_guide1"
+                app:layout_constraintTop_toBottomOf="@id/dDetails_nameTitle" />
+
+            <!-- DEVICE ADDRESS TITLE -->
+            <TextView
+                android:id="@+id/dDetails_addressTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Device Address"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/dDetails_guide1"
+                app:layout_constraintTop_toBottomOf="@id/dDetails_nameText" />
+            <!--    DEVICE ADDRESS     -->
+            <TextView
+                android:id="@+id/dDetails_addressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Address"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/dDetails_guide1"
+                app:layout_constraintTop_toBottomOf="@id/dDetails_addressTitle" />
+
+        <!--   REMOVE DEVICE BUTTON    -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dDetails_unPairDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/rejected"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="Remove Device"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
+                app:elevation="8dp"
+                app:icon="@drawable/baseline_remove_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
